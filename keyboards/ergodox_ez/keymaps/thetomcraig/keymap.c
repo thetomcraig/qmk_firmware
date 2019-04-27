@@ -43,7 +43,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer */
 [BASE] = LAYOUT_ergodox(
-  /* left hand */
+                                                                    /* left hand */
   /* top row */                             KC_ESC,   KC_1,    KC_2,     KC_3,    KC_4,    KC_5,    KC_6,
                                             KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,    KC_T,
   /* index, large top key */                                                                        KC_A,
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* thumb, big keys */                                                                  KC_SPC,    KC_BSPC,
   /* thumb, small bottom key */                                                                                  MO(2),
 
-  /* right hand */
+                                                  /* right hand */
                          MO(2),      KC_7,    KC_8,    KC_9,    KC_0,     KC_LBRACKET, KC_RBRACKET, /* top row */
                          KC_MINUS,                                                                  /* index, large top key */
                                      KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,        KC_BSLS,     /* home row */
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          KC_EQUAL,                                                                  /* index, large bottom key */
                                      KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,     KC_RSFT,
                                               KC_LGUI, KC_RALT, KC_RCTRL, KC_RALT,     KC_RCTRL,    /* bottom row */
-    KC_MEDIA_PLAY_PAUSE, KC_BSPC,                                                                   /* thumb, small top keys */
+        KC_MPLY, KC_BSPC,                                                                           /* thumb, small top keys */
                   RESET,                                                                            /* thumb, small middle key */
                   MO(2),                                                                            /* thumb, small bottom key */
                          KC_ENT,    KC_SPC,                                                         /* thumb, big keys */
@@ -73,13 +73,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = LAYOUT_ergodox(
                                                         /* left hand */
   /* top row */                  _______, _______, _______, _______, _______, _______, _______,
-                                 _______, _______, _______, _______, _______, _______,
+                                 KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
-  /* home row */                 _______, _______, _______, _______, _______, _______,
+  /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______,
                                  _______, _______, _______, _______, _______, _______,
   /* index, large bottom key */                                                        _______,
   /* bottom row */               _______, _______, _______, _______, _______,
-  /* thumb, small top keys */                                                          _______, _______,
+  /* thumb, small top keys */                                                          KC_MRWD, KC_MFFD
   /* thumb, small middle key */                                                                 _______,
   /* thumb, big keys */                                                       _______, _______,
   /* thumb, small bottom key */                                                                 _______,
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______, _______, _______, _______, _______, _______, _______, /* top row */
             _______,                                                       /* index, large top key */
                      _______, _______, _______, _______, _______, _______, /* home row */
-                     _______, _______, _______, _______, _______, _______,
+                     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
             _______,                                                       /* index, large bottom key */
                      _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, /* bottom row */
