@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* top row */                  _______, _______, _______, _______, _______, _______, _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
-  /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______,
+  /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
                                  _______, _______, _______, _______, _______, _______,
   /* index, large bottom key */                                                        _______,
   /* bottom row */               _______, _______, _______, _______, _______,
-  /* thumb, small top keys */                                                          KC_MRWD, KC_MFFD
+  /* thumb, small top keys */                                                          KC_MRWD, KC_MFFD,
   /* thumb, small middle key */                                                                 _______,
   /* thumb, big keys */                                                       _______, _______,
   /* thumb, small bottom key */                                                                 _______,
