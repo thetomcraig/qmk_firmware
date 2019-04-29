@@ -3,7 +3,6 @@
 
 #define BASE 0 // default layer
 #define NAV  1 // navigation
-#define NUMS 1 // numpad
 
 enum custom_keycodes {
   EPRM = SAFE_RANGE,
@@ -67,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MPLY, KC_BSPC,                                                                           /* thumb, small top keys */
                   RESET,                                                                            /* thumb, small middle key */
                   MO(2),                                                                            /* thumb, small bottom key */
-                         KC_ENT,    KC_SPC,                                                         /* thumb, big keys */
+                         KC_ENT,    KC_SPC                                                         /* thumb, big keys */
 ),
 /* Keymap 1: Basic layer */
-[SYMB] = LAYOUT_ergodox(
+[NAV] = LAYOUT_ergodox(
                                                         /* left hand */
   /* top row */                  _______, _______, _______, _______, _______, _______, _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
@@ -94,9 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  _______,                                                       /* thumb, small top keys */
   _______,                                                                 /* thumb, small middle key */
   _______,                                                                 /* thumb, small bottom key */
-            _______, _______,                                              /* thumb, big keys */
-) ,
-[MDIA] = LAYOUT_ergodox(
+            _______, _______                                              /* thumb, big keys */
 ),
 };
 
