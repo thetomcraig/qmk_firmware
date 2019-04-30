@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* top row */                             KC_ESC,   KC_1,    KC_2,     KC_3,    KC_4,    KC_5,    KC_6,
                                             KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,    KC_T,
   /* index, large top key */                                                                        KC_A,
-  /* home row */                            KC_BSPC,  KC_A,    KC_S,     KC_D,    KC_F,    KC_G,
+  /* home row */                            MO(1),    KC_A,    KC_S,     KC_D,    KC_F,    KC_G,
                                             KC_LSFT,  KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,
   /* index, large bottom key */                                                                     MO(1),
   /* bottom row */                          KC_LCTRL, KC_LALT, KC_LCTRL, KC_LALT, KC_LGUI,
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Basic layer */
 [NAV] = LAYOUT_ergodox(
                                                         /* left hand */
-  /* top row */                  KC_9,    _______, _______, _______, _______, _______, _______,
+  /* top row */                  KC_GRV,  _______, _______, _______, _______, _______, _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
   /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______, _______, _______, _______, _______, _______, _______, /* top row */
             _______,                                                       /* index, large top key */
                      _______, _______, _______, _______, _______, _______, /* home row */
-                     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
             _______,                                                       /* index, large bottom key */
                      _______, _______, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, /* bottom row */
