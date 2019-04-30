@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Basic layer */
 [NAV] = LAYOUT_ergodox(
                                                         /* left hand */
-  /* top row */                  _______, _______, _______, _______, _______, _______, _______,
+  /* top row */                  KC_9,    _______, _______, _______, _______, _______, _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
   /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
