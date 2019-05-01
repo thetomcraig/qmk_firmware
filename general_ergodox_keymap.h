@@ -4,7 +4,7 @@
 #define NAV 1 // symbols
 
 enum custom_keycodes {
-  PLACEHOLDER = SAFE_RANGE, // can always be here
+  TMUX_NEW = SAFE_RANGE, // can always be here
   EPRM,
   VRSN,
   RGB_SLD
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MPLY, KC_BSPC,                                                                           /* thumb, small top keys */
                   RESET,                                                                            /* thumb, small middle key */
                   MO(2),                                                                            /* thumb, small bottom key */
-                         KC_ENT,    KC_SPC                                                         /* thumb, big keys */
+                         KC_ENT,    KC_SPC                                                          /* thumb, big keys */
 ),
 /* Keymap 1: Basic layer */
 [NAV] = LAYOUT_ergodox(
@@ -86,11 +86,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      _______, _______, _______, _______, _______, _______, /* home row */
                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
             _______,                                                       /* index, large bottom key */
-                     _______, _______, _______, _______, _______, _______,
+                     _______, TMUX_NEW, _______, _______, _______, _______,
                               _______, _______, _______, _______, _______, /* bottom row */
   _______,  _______,                                                       /* thumb, small top keys */
   _______,                                                                 /* thumb, small middle key */
   _______,                                                                 /* thumb, small bottom key */
-            _______, _______                                              /* thumb, big keys */
+            _______, _______                                               /* thumb, big keys */
 ),
 };
