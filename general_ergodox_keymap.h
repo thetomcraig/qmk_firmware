@@ -4,11 +4,61 @@
 #define NAV 1 // symbols
 
 enum custom_keycodes {
-  TMUX_NEW = SAFE_RANGE, // can always be here
+  TMUX_N = SAFE_RANGE,
+  TMUX_P,
+  TMUX_C,
+  NXT_WD,
+  PRV_WD,
+  PASSWD,
   EPRM,
   VRSN,
   RGB_SLD
 };
+
+
+// This is only for my custom macros
+// Called by the general "process_record_user"
+bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case TMUX_N:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("b")"n");
+      }
+      return false;
+      break;
+    case TMUX_P:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("b")"p");
+      }
+      return false;
+      break;
+    case TMUX_C:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("b")"c");
+      }
+      return false;
+      break;
+    case PRV_WD:
+      if (record->event.pressed) {
+        SEND_STRING(SS_TAP(9B));
+      }
+      return false;
+      break;
+    case NXT_WD:
+      if (record->event.pressed) {
+        SEND_STRING(SS_TAP(9D));
+      }
+      return false;
+      break;
+    case PASSWD:
+      if (record->event.pressed) {
+        SEND_STRING("Test test test");
+      }
+      return false;
+      break;
+  }
+  return true;
+}
 /*
 
                                                        left hand
@@ -73,22 +123,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
   /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-                                 _______, _______, _______, _______, _______, _______,
+                                 _______, _______, _______, TMUX_C,  _______, _______,
   /* index, large bottom key */                                                        _______,
   /* bottom row */               _______, _______, _______, _______, _______,
   /* thumb, small top keys */                                                          KC_MRWD, KC_MFFD,
   /* thumb, small middle key */                                                                 _______,
-  /* thumb, big keys */                                                       _______, _______,
+  /* thumb, big keys */                                                       _______, KC_DEL,
   /* thumb, small bottom key */                                                                 _______,
                                   /* right hand */
             _______, _______, _______, _______, _______, _______, _______, /* top row */
             _______,                                                       /* index, large top key */
-                     _______, _______, _______, _______, _______, _______, /* home row */
+                     _______, _______, PRV_WD,  NXT_WD,  TMUX_P,  _______, /* home row */
                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
             _______,                                                       /* index, large bottom key */
-                     _______, TMUX_NEW, _______, _______, _______, _______,
-                              _______, _______, _______, _______, _______, /* bottom row */
-  _______,  _______,                                                       /* thumb, small top keys */
+                     TMUX_N,  _______, _______, _______, _______, _______,
+                              _______, _______, _______, _______, PASSWD,  /* bottom row */
+  _______,  KC_DEL,                                                        /* thumb, small top keys */
   _______,                                                                 /* thumb, small middle key */
   _______,                                                                 /* thumb, small bottom key */
             _______, _______                                               /* thumb, big keys */

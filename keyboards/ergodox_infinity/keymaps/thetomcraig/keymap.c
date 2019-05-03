@@ -23,13 +23,14 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // Before normal operation, see if keycode is for a custom macro
+  // If it is, break early
+  bool still_need_to_process = process_custom_macro_keys(keycode, record);
+  if (still_need_to_process == false) {
+    return false;
+  }
   switch (keycode) {
     // dynamically generate these.
-    case TUMX_NEW:
-      if (record->event.pressed) {
-        SEND_STRING("Test");
-        SEND_STRING(SS_LCTRL("b")"c");
-      }
     case EPRM:
       if (record->event.pressed) {
         eeconfig_init();

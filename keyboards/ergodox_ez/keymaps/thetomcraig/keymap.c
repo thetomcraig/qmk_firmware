@@ -4,7 +4,15 @@
 #include "../../../../general_ergodox_keymap.h"
 
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // Before normal operation, see if keycode is for a custom macro
+  // If it is, break early
+  bool still_need_to_process = process_custom_macro_keys(keycode, record);
+  if (still_need_to_process == false) {
+    return false;
+  }
+
   if (record->event.pressed) {
     switch (keycode) {
       case EPRM:
