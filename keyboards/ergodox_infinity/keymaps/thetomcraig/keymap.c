@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-// Keymaps defined here
 #include "../../../../general_ergodox_keymap.h"
 
 
@@ -14,7 +13,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
         case 1:
-        if (record->event.pressed) { // For resetting EEPROM
+        if (record->event.pressed) {
           eeconfig_init();
         }
         break;
@@ -71,7 +70,6 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
         case 1:
             ergodox_right_led_1_on();
             break;
