@@ -23,6 +23,39 @@ void matrix_init_user(void) {
 
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // Before normal operation, see if keycode is for a custom macro
+  // If it is, break early
+  bool still_need_to_process = process_custom_macro_keys(keycode, record);
+  if (still_need_to_process == false) {
+    return false;
+  }
+  switch (keycode) {
+    // dynamically generate these.
+    case EPRM:
+      if (record->event.pressed) {
+        eeconfig_init();
+      }
+      return false;
+      break;
+    case VRSN:
+      if (record->event.pressed) {
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+      }
+      return false;
+      break;
+    case RGB_SLD:
+      if (record->event.pressed) {
+        #ifdef RGBLIGHT_ENABLE
+          rgblight_mode(1);
+        #endif
+      }
+      return false;
+      break;
+  }
+  return true;
+}
+
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
 
