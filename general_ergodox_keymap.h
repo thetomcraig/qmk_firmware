@@ -3,12 +3,14 @@
 #define BASE 0 // default layer
 #define NAV 1 // symbols
 
+
 enum custom_keycodes {
   TMUX_N = SAFE_RANGE,
   TMUX_P,
   TMUX_C,
-  NXT_WD,
+  TMUX_CYC,
   PRV_WD,
+  NXT_WD,
   PASSWD,
   EPRM,
   VRSN,
@@ -24,37 +26,36 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL("b")"n");
       }
-      return false;
       break;
     case TMUX_P:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL("b")"p");
       }
-      return false;
       break;
     case TMUX_C:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL("b")"c");
       }
-      return false;
       break;
-    case PRV_WD:
+    case TMUX_CYC:
       if (record->event.pressed) {
-        SEND_STRING(SS_TAP(9B));
+        SEND_STRING(SS_LCTRL("f"));
       }
-      return false;
       break;
     case NXT_WD:
       if (record->event.pressed) {
-        SEND_STRING(SS_TAP(9D));
+        SEND_STRING(SS_LALT("x"));
       }
-      return false;
+      break;
+    case PRV_WD:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT("a"));
+      }
       break;
     case PASSWD:
       if (record->event.pressed) {
         SEND_STRING("Test test test");
       }
-      return false;
       break;
   }
   return true;
@@ -122,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* top row */                  KC_GRV,  _______, _______, _______, _______, _______, _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
-  /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+  /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, TMUX_CYC,_______,
                                  _______, _______, _______, TMUX_C,  _______, _______,
   /* index, large bottom key */                                                        _______,
   /* bottom row */               _______, _______, _______, _______, _______,
