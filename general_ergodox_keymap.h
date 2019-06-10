@@ -30,32 +30,32 @@ bool process_password_keys(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case P_CMP:
       if (record->event.pressed) {
-        SEND_STRING(computer_password);
-        SEND_STRING(SS_TAP(X_ENTER));
+        send_string(computer_password);
+        send_string(SS_TAP(X_ENTER));
       }
       break;
     case P_1PASS:
       if (record->event.pressed) {
-        SEND_STRING(one_pass_password);
-        SEND_STRING(SS_TAP(X_ENTER));
+        send_string(one_pass_password);
+        send_string(SS_TAP(X_ENTER));
       }
       break;
     case P_OKTA:
       if (record->event.pressed) {
-        SEND_STRING(okta_password);
-        SEND_STRING(SS_TAP(X_ENTER));
+        send_string(okta_password);
+        send_string(SS_TAP(X_ENTER));
       }
       break;
     case P_CP:
       if (record->event.pressed) {
-        SEND_STRING(coachportal_password);
-        SEND_STRING(SS_TAP(X_ENTER));
+        send_string(coachportal_password);
+        send_string(SS_TAP(X_ENTER));
       }
       break;
     case P_LP:
       if (record->event.pressed) {
-        SEND_STRING(last_pass_password);
-        SEND_STRING(SS_TAP(X_ENTER));
+        send_string(last_pass_password);
+        send_string(SS_TAP(X_ENTER));
       }
       break;
   }
@@ -74,32 +74,32 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case TMUX_N:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("b")"n");
+        send_string(SS_LCTRL("b")"n");
       }
       break;
     case TMUX_P:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("b")"p");
+        send_string(SS_LCTRL("b")"p");
       }
       break;
     case TMUX_C:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("b")"c");
+        send_string(SS_LCTRL("b")"c");
       }
       break;
     case TMUX_CYC:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("f"));
+        send_string(SS_LCTRL("f"));
       }
       break;
     case NXT_WD:
       if (record->event.pressed) {
-        SEND_STRING(SS_LALT("x"));
+        send_string(SS_LALT("x"));
       }
       break;
     case PRV_WD:
       if (record->event.pressed) {
-        SEND_STRING(SS_LALT("a"));
+        send_string(SS_LALT("a"));
       }
       break;
   }
@@ -147,23 +147,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* home row */                  MO(1),    KC_A,    KC_S,     KC_D,    KC_F,      KC_G,
                                   KC_LSFT,  KC_Z,    KC_X,     KC_C,    KC_V,      KC_B,
   /* index, large bottom key */                                                             MO(2),
-  /* bottom row */                          KC_LPRN, KC_RPRN,  _______, KC_LCTRL,  KC_LALT,
-  /* thumb, small top keys */                                                               KC_HOME, KC_END,
-  /* thumb, small middle key */                                                                      KC_ENT,
+  /* bottom row */                KC_LCTRL, _______,  _______, KC_LALT, KC_LGUI,
+  /* thumb, small top keys */                                                               KC_HOME, KC_ENT,
+  /* thumb, small middle key */                                                                      KC_LPRN,
   /* thumb, big keys */                                                          KC_SPC,    KC_BSPC,
-  /* thumb, small bottom key */                                                                      KC_LGUI,
+  /* thumb, small bottom key */                                                                      KC_RPRN,
 
                                                                             /* right hand */
-  /* top row */                                       _______, KC_6,    KC_7,    KC_8,     KC_9,        KC_0,        _______,
-  /* index, large top key */                          MO(1),
-                                                               KC_Y,    KC_U,    KC_I,     KC_O,        KC_P,        KC_BSLS,
-  /* home row */                                               KC_H,    KC_J,    KC_K,     KC_L,        KC_SCLN,     KC_QUOT,
-  /* index, large bottom key */                       MO(2),
-                                                               KC_N,    KC_M,    KC_COMM,  KC_DOT,      KC_SLSH,     KC_RSFT,
-  /* bottom row */                                                      KC_RALT, KC_RCTRL, _______,     KC_LBRACKET, KC_RBRACKET,
-  /* thumb, small top keys */               KC_MINUS, KC_PLUS,
-  /* thumb, small middle key */             KC_BSPC,
-  /* thumb, small bottom key */             KC_RGUI,
+  /* top row */                                       _______, KC_6,    KC_7,    KC_8,     KC_9,        KC_0,      _______,
+  /* index, large top key */                          KC_MINUS,
+                                                               KC_Y,    KC_U,    KC_I,     KC_O,        KC_P,      KC_BSLS,
+  /* home row */                                               KC_H,    KC_J,    KC_K,     KC_L,        KC_SCLN,   KC_QUOT,
+  /* index, large bottom key */                       KC_PLUS,
+                                                               KC_N,    KC_M,    KC_COMM,  KC_DOT,      KC_SLSH,   KC_RSFT,
+  /* bottom row */                                                      KC_RGUI, KC_RALT,  _______,     _______,   KC_RCTRL,
+  /* thumb, small top keys */             KC_BSPC,    KC_DEL,
+  /* thumb, small middle key */           KC_LBRACKET,
+  /* thumb, small bottom key */           KC_RBRACKET,
   /* thumb, big keys */                               KC_ENT,  KC_SPC
 ),
 
