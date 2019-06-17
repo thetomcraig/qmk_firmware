@@ -13,14 +13,15 @@ enum custom_keycodes {
   TMUX_CYC,
   PRV_WD,
   NXT_WD,
-  EPRM,
-  VRSN,
-  RGB_SLD,
+  NP_COL,
   P_CMP,
   P_1PASS,
   P_OKTA,
   P_CP,
   P_LP,
+  EPRM,
+  VRSN,
+  RGB_SLD,
 };
 
 
@@ -72,6 +73,10 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
   }
   // Not a password macro; move on
   switch (keycode) {
+    case NP_COL:
+      if (record->event.pressed) {
+        send_string(":");
+      }
     case TMUX_N:
       if (record->event.pressed) {
         send_string(SS_LCTRL("b")"n");
@@ -94,12 +99,18 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       break;
     case NXT_WD:
       if (record->event.pressed) {
-        send_string(SS_LALT("x"));
+        send_string(SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
+      }
+      else {
+        send_string(SS_UP(X_RIGHT) SS_UP(X_LALT));
       }
       break;
     case PRV_WD:
       if (record->event.pressed) {
-        send_string(SS_LALT("a"));
+        send_string(SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
+      }
+      else {
+        send_string(SS_UP(X_LEFT) SS_UP(X_LALT));
       }
       break;
   }
@@ -215,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* thumb, small bottom key */                                                                 _______,
 
                                                                            /* right hand */
-  /* top row */                                     _______, _______, KC_ESC,  KC_PSLS, KC_PAST, KC_PMNS,  _______,
+  /* top row */                                     _______, _______, KC_ESC,  KC_PSLS, KC_PAST, KC_PMNS,  NP_COL,
   /* index, large top key */                        _______,
                                                              _______, KC_7,    KC_8,    KC_9,    KC_PPLS,  _______,
   /* home row */                                             _______, KC_4,    KC_5,    KC_6,    KC_PPLS,  _______,
