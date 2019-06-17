@@ -141,29 +141,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /************************/
 [BASE] = LAYOUT_ergodox(
                                                            /* left hand */
-  /* top row */                   KC_ESC,   KC_1,    KC_2,     KC_3,    KC_4,      KC_5,    _______,
+  /* top row */                   KC_ESC,   KC_1,    KC_2,     KC_3,    KC_4,      KC_5,    KC_GRV,
                                   KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,      KC_T,
   /* index, large top key */                                                                MO(1),
   /* home row */                  MO(1),    KC_A,    KC_S,     KC_D,    KC_F,      KC_G,
                                   KC_LSFT,  KC_Z,    KC_X,     KC_C,    KC_V,      KC_B,
   /* index, large bottom key */                                                             MO(2),
   /* bottom row */                KC_LCTRL, _______,  _______, KC_LALT, KC_LGUI,
-  /* thumb, small top keys */                                                               KC_HOME, KC_ENT,
-  /* thumb, small middle key */                                                                      KC_LPRN,
-  /* thumb, big keys */                                                          KC_SPC,    KC_BSPC,
-  /* thumb, small bottom key */                                                                      KC_RPRN,
+  /* thumb, small top keys */                                                               KC_ENT,  _______,
+  /* thumb, small middle key */                                                                      KC_CAPSLOCK,
+  /* thumb, big keys */                                                           KC_SPC,   KC_BSPC,
+  /* thumb, small bottom key */                                                                      MO(1),
 
                                                                             /* right hand */
-  /* top row */                                       _______, KC_6,    KC_7,    KC_8,     KC_9,        KC_0,      _______,
+  /* top row */                                       KC_6,    KC_7,    KC_8,     KC_9,    KC_0,        KC_LBRACKET, KC_RBRACKET,
   /* index, large top key */                          KC_MINUS,
-                                                               KC_Y,    KC_U,    KC_I,     KC_O,        KC_P,      KC_BSLS,
-  /* home row */                                               KC_H,    KC_J,    KC_K,     KC_L,        KC_SCLN,   KC_QUOT,
-  /* index, large bottom key */                       KC_PLUS,
-                                                               KC_N,    KC_M,    KC_COMM,  KC_DOT,      KC_SLSH,   KC_RSFT,
-  /* bottom row */                                                      KC_RGUI, KC_RALT,  _______,     _______,   KC_RCTRL,
-  /* thumb, small top keys */             KC_BSPC,    KC_DEL,
-  /* thumb, small middle key */           KC_LBRACKET,
-  /* thumb, small bottom key */           KC_RBRACKET,
+                                                               KC_Y,    KC_U,    KC_I,     KC_O,        KC_P,        KC_BSLS,
+  /* home row */                                               KC_H,    KC_J,    KC_K,     KC_L,        KC_SCLN,     KC_QUOT,
+  /* index, large bottom key */                       KC_EQUAL,
+                                                               KC_N,    KC_M,    KC_COMM,  KC_DOT,      KC_SLSH,     KC_RSFT,
+  /* bottom row */                                                      KC_RGUI, KC_RALT,  _______,     _______,     KC_RCTRL,
+  /* thumb, small top keys */             KC_DEL,     KC_BSPC,
+  /* thumb, small middle key */           KC_CAPSLOCK,
+  /* thumb, small bottom key */           MO(1),
   /* thumb, big keys */                               KC_ENT,  KC_SPC
 ),
 
@@ -180,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* index, large bottom key */                                                        _______,
   /* bottom row */               _______, _______, _______, _______, _______,
   /* thumb, small top keys */                                                          _______, _______,
-  /* thumb, small middle key */                                                                 _______,
+  /* thumb, small middle key */                                                                 RESET,
   /* thumb, big keys */                                                       _______, KC_DEL,
   /* thumb, small bottom key */                                                                 _______,
 
@@ -192,8 +192,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* index, large bottom key */                     _______,
                                                              TMUX_N,  _______, _______, _______, _______,     _______,
   /* bottom row */                                                    KC_MRWD, KC_MPLY, KC_MFFD, KC__VOLDOWN, KC__VOLUP,
-  /* thumb, small top keys */             _______,  _______,
-  /* thumb, small middle key */           _______,
+  /* thumb, small top keys */             _______,  KC_DEL,
+  /* thumb, small middle key */           RESET,
   /* thumb, small bottom key */           _______,
   /* thumb, big keys */                             _______, _______
 ),
