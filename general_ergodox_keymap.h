@@ -99,12 +99,18 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       break;
     case NXT_WD:
       if (record->event.pressed) {
-        send_string(SS_LALT("x"));
+        send_string(SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
+      }
+      else {
+        send_string(SS_UP(X_RIGHT) SS_UP(X_LALT));
       }
       break;
     case PRV_WD:
       if (record->event.pressed) {
-        send_string(SS_LALT("a"));
+        send_string(SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
+      }
+      else {
+        send_string(SS_UP(X_LEFT) SS_UP(X_LALT));
       }
       break;
   }
