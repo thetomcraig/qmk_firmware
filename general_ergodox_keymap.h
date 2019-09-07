@@ -11,6 +11,15 @@ enum custom_keycodes {
   TMUX_P,
   TMUX_C,
   TMUX_CYC,
+  TMUX_1,
+  TMUX_2,
+  TMUX_3,
+  TMUX_4,
+  TMUX_5,
+  TMUX_6,
+  TMUX_7,
+  TMUX_8,
+  TMUX_9,
   PRV_WD,
   NXT_WD,
   NP_COL,
@@ -95,6 +104,51 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
     case TMUX_CYC:
       if (record->event.pressed) {
         send_string(SS_LCTRL("f"));
+      }
+      break;
+    case TMUX_1:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("1"));
+      }
+      break;
+    case TMUX_2:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("2"));
+      }
+      break;
+    case TMUX_3:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("3"));
+      }
+      break;
+    case TMUX_4:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("4"));
+      }
+      break;
+    case TMUX_5:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("5"));
+      }
+      break;
+    case TMUX_6:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("6"));
+      }
+      break;
+    case TMUX_7:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("7"));
+      }
+      break;
+    case TMUX_8:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("8"));
+      }
+      break;
+    case TMUX_9:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("9"));
       }
       break;
     case NXT_WD:
@@ -183,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*****************************/
 [LYR1] = LAYOUT_ergodox(
                                                         /* left hand */
-  /* top row */                  KC_GRV,  _______, _______, _______, _______, _______, _______,
+  /* top row */                  KC_GRV,  TMUX_1,  TMUX_2,  TMUX_3,  TMUX_4,  TMUX_5,  _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
   /* index, large top key */                                                           _______,
   /* home row */                 _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
@@ -196,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* thumb, small bottom key */                                                                 _______,
 
                                                                            /* right hand */
-  /* top row */                                     _______, _______, _______, _______, _______, _______,     _______,
+  /* top row */                                     TMUX_6,  TMUX_7,  TMUX_8,  TMUX_9,  _______, _______,     _______,
   /* index, large top key */                        _______,
                                                              TMUX_C,  TMUX_CYC,PRV_WD,  NXT_WD,  TMUX_P,      _______,
   /* home row */                                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,     _______,
