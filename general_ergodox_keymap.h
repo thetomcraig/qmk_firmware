@@ -11,6 +11,8 @@ enum custom_keycodes {
   TMUX_P,
   TMUX_C,
   TMUX_CYC,
+  TMUX_SWAP_L,
+  TMUX_SWAP_R,
   TMUX_1,
   TMUX_2,
   TMUX_3,
@@ -104,6 +106,16 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
     case TMUX_CYC:
       if (record->event.pressed) {
         send_string(SS_LCTRL("f"));
+      }
+      break;
+    case TMUX_SWAP_L:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("["));
+      }
+      break;
+    case TMUX_SWAP_R:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("]"));
       }
       break;
     case TMUX_1:
