@@ -10,10 +10,14 @@ enum custom_keycodes {
   LYR1,
   LYR2,
   LYR3,
+
   // ergodox
   EPRM,
   VRSN,
   RGB_SLD,
+
+  // numpad
+  NP_COL,
 
   // passwords
   P_CMP,
@@ -22,8 +26,11 @@ enum custom_keycodes {
   P_CP,
   P_LP,
 
+  // for changing the size of windows
   WIN_L,
   WIN_R,
+  WIN_U,
+  WIN_D,
   WIN_F,
   WIN_C,
 
@@ -44,6 +51,7 @@ enum custom_keycodes {
   TMUX_8,
   TMUX_9,
 
+  // bash
   PRV_WD,
   NXT_WD,
 };
@@ -95,6 +103,10 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
+    case NP_COL:
+      if (record->event.pressed) {
+        send_string(":");
+      }
     case WIN_L:
       if (record->event.pressed) {
         send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
@@ -109,18 +121,34 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
         send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_RIGHT));
       }
       break;
-    case WIN_F:
+    case WIN_D:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
+      }
+      break;
+    case WIN_U:
       if (record->event.pressed) {
         send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_UP));
       } else {
         send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_UP));
       }
       break;
+    case WIN_F:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("f");
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+      }
+      break;
     case WIN_C:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("c");
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
       }
       break;
     case TMUX_N:
