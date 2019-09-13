@@ -1,8 +1,8 @@
 #include QMK_KEYBOARD_H
+#include "version.h"
 #include "secrets.h"
 
 extern keymap_config_t keymap_config;
-
 
 enum custom_keycodes {
   // iris
@@ -21,6 +21,11 @@ enum custom_keycodes {
   P_OKTA,
   P_CP,
   P_LP,
+
+  WIN_L,
+  WIN_R,
+  WIN_F,
+  WIN_C,
 
   // tmux
   TMUX_N,
@@ -90,6 +95,34 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
+    case WIN_L:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_LEFT));
+      }
+      break;
+    case WIN_R:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_RIGHT));
+      }
+      break;
+    case WIN_F:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_UP));
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_UP));
+      }
+      break;
+    case WIN_C:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
+      }
+      break;
     case TMUX_N:
       if (record->event.pressed) {
         send_string(SS_LCTRL("b")"n");
