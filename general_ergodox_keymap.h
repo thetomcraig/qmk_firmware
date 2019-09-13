@@ -1,12 +1,16 @@
 #include QMK_KEYBOARD_H
 #include "common_macros.h"
 
+#define DOX_BASE 0  // default layer
+#define DOX_LYR1 1  // symbols
+#define DOX_LYR2 2  // numpad
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /************************/
 /* LAYER 0: BASIC LAYER */
 /************************/
-[BASE] = LAYOUT_ergodox(
+[DOX_BASE] = LAYOUT_ergodox(
                                                            /* left hand */
   /* top row */                   KC_ESC,   KC_1,    KC_2,     KC_3,    KC_4,      KC_5,    KC_GRV,
                                   KC_TAB,   KC_Q,    KC_W,     KC_E,    KC_R,      KC_T,
@@ -37,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*****************************/
 /* LAYER 1: NAVIGATION LAYER */
 /*****************************/
-[LYR1] = LAYOUT_ergodox(
+[DOX_LYR1] = LAYOUT_ergodox(
                                                         /* left hand */
   /* top row */                  KC_GRV,  TMUX_1,  TMUX_2,  TMUX_3,  TMUX_4,  TMUX_5,  _______,
                                  KC_ENT,  _______, KC_UP,   _______, _______, _______,
@@ -67,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*************************/
 /* LAYER 2: NUMPAD LAYER */
 /*************************/
-[LYR2] = LAYOUT_ergodox(
+[DOX_LYR2] = LAYOUT_ergodox(
                                                         /* left hand */
   /* top row */                  _______, _______, _______, _______, _______, _______, _______,
                                  _______, _______, _______, _______, _______, _______,

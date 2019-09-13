@@ -1,3 +1,6 @@
+// Common Macros used by my mechanical keyboards
+// Keyboard keymaps can use these macros by including this .h file
+
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "secrets.h"
@@ -5,42 +8,67 @@
 extern keymap_config_t keymap_config;
 
 enum custom_keycodes {
-  // iris
-  BASE = SAFE_RANGE,
-  LYR1,
-  LYR2,
-  LYR3,
+  /********/
+  /* IRIS */
+  /********/
+  IRIS_BASE = SAFE_RANGE,
+  IRIS_LYR1,
+  IRIS_LYR2,
+  IRIS_LYR3,
 
-  // ergodox
+  /***********/
+  /* ERGODOX */
+  /***********/
   EPRM,
   VRSN,
   RGB_SLD,
 
-  // numpad
+  /**********/
+  /* NUMPAD */
+  /**********/
   NP_COL,
 
-  // passwords
+  /*************/
+  /* PASSWORDS */
+  /*************/
   P_CMP,
   P_1PASS,
   P_OKTA,
   P_CP,
   P_LP,
 
-  // for changing the size of windows
+  /***********/
+  /* WINDOWS */
+  /***********/
+  // Move to left half of screen
   WIN_L,
+  // Move to right half of screen
   WIN_R,
+  // Move to upper half of screen
   WIN_U,
+  // Move to lower half of screen
   WIN_D,
+  // Make full size
   WIN_F,
+  // Make medium size and center on screen
   WIN_C,
 
-  // tmux
+  /********/
+  /* TMUX */
+  /********/
+  // Next window
   TMUX_N,
+  // Previous window
   TMUX_P,
+  // Create new window
   TMUX_C,
+  // Cycle through panes
   TMUX_CYC,
+  // Move window to the left
   TMUX_SWAP_L,
+  // Move window to the right
   TMUX_SWAP_R,
+  // Move to window number N
   TMUX_1,
   TMUX_2,
   TMUX_3,
@@ -51,14 +79,18 @@ enum custom_keycodes {
   TMUX_8,
   TMUX_9,
 
-  // bash
+  /********/
+  /* BASH */
+  /********/
+  // Move cursor to previous word
   PRV_WD,
+  // Move cursor to next word
   NXT_WD,
 };
 
 
-// This is only for passwords
-// These string edfined in a file NOT in VCS
+// This function enters passwords
+// The strings are defined in a file NOT in VCS, called "secrets.h"
 bool process_password_keys(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case P_CMP:
@@ -95,7 +127,7 @@ bool process_password_keys(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// This is for my custom macros; keyboard agnostic
+// This processes all other custom macros; they're keys defined above
 bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
   bool still_need_to_process = process_password_keys(keycode, record);
   if (still_need_to_process == false) {
