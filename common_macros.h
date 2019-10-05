@@ -143,34 +143,30 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       }
     case WIN_L:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("a");
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_LEFT));
       }
       break;
     case WIN_R:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("d");
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_RIGHT));
       }
       break;
     case WIN_U:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("w");
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_UP));
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_UP));
       }
       break;
     case WIN_D:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("s");
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
       }
       break;
     case WIN_F:
