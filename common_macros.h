@@ -52,6 +52,8 @@ enum custom_keycodes {
   WIN_F,
   // Make medium size and center on screen
   WIN_C,
+  // Cycle to the next screen (left to right)
+  WIN_CYC,
 
   /********/
   /* TMUX */
@@ -141,30 +143,34 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       }
     case WIN_L:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("a");
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_LEFT));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
       }
       break;
     case WIN_R:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("d");
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_RIGHT));
-      }
-      break;
-    case WIN_D:
-      if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
       }
       break;
     case WIN_U:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_UP));
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("w");
       } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_UP));
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+      }
+      break;
+    case WIN_D:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("s");
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
       }
       break;
     case WIN_F:
@@ -178,7 +184,15 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
     case WIN_C:
       if (record->event.pressed) {
         send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("c");
+        send_string("e");
+      } else {
+        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+      }
+      break;
+    case WIN_CYC:
+      if (record->event.pressed) {
+        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
+        send_string("q");
       } else {
         send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
       }
@@ -205,12 +219,12 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       break;
     case TMUX_SWAP_L:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("["));
+        send_string(SS_LCTRL("b")"r");
       }
       break;
     case TMUX_SWAP_R:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("]"));
+        send_string(SS_LCTRL("b")"t");
       }
       break;
     case TMUX_1:
