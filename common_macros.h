@@ -44,13 +44,21 @@ enum custom_keycodes {
   WIN_L,
   // Move to right half of screen
   WIN_R,
-  // Move to upper half of screen
-  WIN_U,
-  // Move to lower half of screen
-  WIN_D,
+  // Move to top half of screen
+  WIN_T,
+  // Move to bottom half of screen
+  WIN_B,
+  // Move to top left quarter of screen
+  WIN_TL,
+  // Move to top right quarter of screen
+  WIN_TR,
+  // Move to bottom left quarter of screen
+  WIN_BL, 
+  // Move to bottom right quarter of screen
+  WIN_BR,
   // Make full size
   WIN_F,
-  // Make medium size and center on screen
+  // (Center) Make medium size and center on screen
   WIN_C,
   // Cycle to the next screen (left to right)
   WIN_CYC,
@@ -143,54 +151,66 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       }
     case WIN_L:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_LEFT));
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_LEFT));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "h");
+        send_string(SS_TAP(X_ESCAPE));
       }
       break;
     case WIN_R:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_RIGHT));
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_RIGHT));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "l");
+        send_string(SS_TAP(X_ESCAPE));
       }
       break;
-    case WIN_U:
+    case WIN_T:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_UP));
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_UP));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "k");
+        send_string(SS_TAP(X_ESCAPE));
       }
       break;
-    case WIN_D:
+    case WIN_B:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_DOWN(X_DOWN));
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT) SS_UP(X_DOWN));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "j");
+        send_string(SS_TAP(X_ESCAPE));
+      }
+      break;
+    case WIN_TL:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "kh");
+        send_string(SS_TAP(X_ESCAPE));
+      }
+      break;
+    case WIN_TR:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "kl");
+        send_string(SS_TAP(X_ESCAPE));
+      }
+      break;
+    case WIN_BL: 
+      if (record->event.pressed) {
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "jh");
+        send_string(SS_TAP(X_ESCAPE));
+      }
+      break;
+    case WIN_BR:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "jl");
+        send_string(SS_TAP(X_ESCAPE));
       }
       break;
     case WIN_F:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("f");
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) SS_TAP(X_SPACE)); 
+        send_string(SS_TAP(X_ESCAPE));
       }
       break;
     case WIN_C:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("e");
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("v"))));
       }
       break;
     case WIN_CYC:
       if (record->event.pressed) {
-        send_string(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT));
-        send_string("q");
-      } else {
-        send_string(SS_UP(X_LCTRL) SS_UP(X_LALT));
+        send_string(SS_LCTRL(SS_LALT(SS_LGUI("x"))));
       }
       break;
     case TMUX_N:
