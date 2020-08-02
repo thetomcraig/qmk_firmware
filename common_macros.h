@@ -230,17 +230,17 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       break;
     case TMUX_CYC:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("f"));
+        send_string(SS_LCTRL("b")"s");
       }
       break;
     case TMUX_SWAP_L:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("b")"r");
+        send_string(SS_LCTRL("b")"i");
       }
       break;
     case TMUX_SWAP_R:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("b")"t");
+        send_string(SS_LCTRL("b")"o");
       }
       break;
     case TMUX_1:
