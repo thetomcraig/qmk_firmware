@@ -5,6 +5,18 @@
 #include "version.h"
 #include "secrets.h"
 
+#define DOX_BASE 0  
+#define DOX_LYR1 1 
+#define DOX_LYR2 2
+
+#define KC_BRTU KC_BRMU
+#define KC_BRTD KC_BRMD
+#define KC_CAPS KC_CAPSLOCK
+#define KC_L_BR KC_LBRACKET
+#define KC_R_BR KC_RBRACKET
+#define TX_SW_L TMUX_SWAP_L
+#define TX_SW_R TMUX_SWAP_R
+
 extern keymap_config_t keymap_config;
 
 enum custom_keycodes {

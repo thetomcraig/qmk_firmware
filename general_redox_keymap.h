@@ -1,17 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "common_macros.h"
 
-#define DOX_BASE 0  // default layer
-#define DOX_LYR1 1  // symbols
-
-#define KC_BRTD KC_BRMD
-#define KC_BRTU KC_BRMU
-#define KC_CAPS KC_CAPSLOCK
-#define KC_L_BR KC_LBRACKET
-#define KC_R_BR KC_RBRACKET
-#define TX_SW_L TMUX_SWAP_L
-#define TX_SW_R TMUX_SWAP_R
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [DOX_BASE] = LAYOUT(
