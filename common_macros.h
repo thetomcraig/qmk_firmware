@@ -49,31 +49,23 @@ enum custom_keycodes {
   P_CP,
   P_LP,
 
-  /***********/
-  /* WINDOWS */
-  /***********/
-  // Move to left half of screen
-  WIN_L,
-  // Move to right half of screen
-  WIN_R,
-  // Move to top half of screen
-  WIN_T,
-  // Move to bottom half of screen
-  WIN_B,
-  // Move to top left quarter of screen
-  WIN_TL,
-  // Move to top right quarter of screen
-  WIN_TR,
-  // Move to bottom left quarter of screen
-  WIN_BL, 
-  // Move to bottom right quarter of screen
-  WIN_BR,
-  // Make full size
-  WIN_F,
-  // (Center) Make medium size and center on screen
-  WIN_C,
-  // Cycle to the next screen (left to right)
-  WIN_CYC,
+
+  /***************************/
+  /* HYPER (GUI + ALT + SFT) */
+  /***************************/
+  // Meant to be congruent with
+  // karabiner maps for internal keyboard
+  HYP_Q,
+  HYP_W,
+  HYP_E,
+  HYP_A,
+  HYP_S,
+  HYP_D,
+  HYP_Z, 
+  HYP_X,
+  HYP_C,
+  HYP_V,
+  HYP_F,
 
   /********/
   /* TMUX */
@@ -100,6 +92,8 @@ enum custom_keycodes {
   TMUX_7,
   TMUX_8,
   TMUX_9,
+  // Move to the LAST tmux window
+  TMUX_LAST,
 
   /********/
   /* BASH */
@@ -161,68 +155,59 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         send_string(":");
       }
-    case WIN_L:
+    case HYP_Q:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "h");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("q"))));
       }
       break;
-    case WIN_R:
+    case HYP_W:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "l");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("w"))));
       }
       break;
-    case WIN_T:
+    case HYP_E:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "k");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("e"))));
       }
       break;
-    case WIN_B:
+    case HYP_A:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "j");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("a"))));
       }
       break;
-    case WIN_TL:
+    case HYP_S:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "kh");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("s"))));
       }
       break;
-    case WIN_TR:
+    case HYP_D:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "kl");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("d"))));
       }
       break;
-    case WIN_BL: 
+    case HYP_Z:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "jh");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("z"))));
       }
       break;
-    case WIN_BR:
+    case HYP_X:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) "jl");
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("x"))));
       }
       break;
-    case WIN_F:
+    case HYP_C:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("m"))) SS_TAP(X_SPACE)); 
-        send_string(SS_TAP(X_ESCAPE));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("c"))));
       }
       break;
-    case WIN_C:
+    case HYP_V:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("v"))));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("v"))));
       }
       break;
-    case WIN_CYC:
+    case HYP_F:
       if (record->event.pressed) {
-        send_string(SS_LCTRL(SS_LALT(SS_LGUI("x"))));
+        send_string(SS_LGUI(SS_LALT(SS_LSFT("f"))));
       }
       break;
     case TMUX_N:
@@ -257,47 +242,52 @@ bool process_custom_macro_keys(uint16_t keycode, keyrecord_t *record) {
       break;
     case TMUX_1:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("1"));
+        send_string(SS_LCTRL("b")"1");
       }
       break;
     case TMUX_2:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("2"));
+        send_string(SS_LCTRL("b")"2");
       }
       break;
     case TMUX_3:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("3"));
+        send_string(SS_LCTRL("b")"3");
       }
       break;
     case TMUX_4:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("4"));
+        send_string(SS_LCTRL("b")"4");
       }
       break;
     case TMUX_5:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("5"));
+        send_string(SS_LCTRL("b")"5");
       }
       break;
     case TMUX_6:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("6"));
+        send_string(SS_LCTRL("b")"6");
       }
       break;
     case TMUX_7:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("7"));
+        send_string(SS_LCTRL("b")"7");
       }
       break;
     case TMUX_8:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("8"));
+        send_string(SS_LCTRL("b")"8");
       }
       break;
     case TMUX_9:
       if (record->event.pressed) {
-        send_string(SS_LCTRL("9"));
+        send_string(SS_LCTRL("b")"9");
+      }
+      break;
+    case TMUX_LAST:
+      if (record->event.pressed) {
+        send_string(SS_LCTRL("b")"l");
       }
       break;
     case NXT_WD:

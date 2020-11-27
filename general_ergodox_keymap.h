@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* index, large bottom key */                               KC_EQUAL,
                                                                             KC_N,     KC_M,        KC_COMM,      KC_DOT,      KC_SLSH,     KC_RSFT,
     /* bottom row */                                                                  KC_RGUI,     KC_RALT,      KC_GRV,      KC_RALT,     KC_RCTRL,
-    /* thumb, small top keys */     KC_BSPC,    KC_BSPC,
+    /* thumb, small top keys */     KC_BSPC,    KC_EQUAL,
     /* thumb, small middle key */   _______,
     /* thumb, small bottom key */   _______,
     /* thumb, big keys */                       KC_ENT,  KC_SPC
@@ -36,10 +36,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DOX_LYR1] = LAYOUT_ergodox(
                                    /* left hand */
     /* top row */                  KC_GRV,  TMUX_1,  TMUX_2,  TMUX_3,  TMUX_4,    TMUX_5,  _______,
-                                   _______, WIN_TL,  WIN_T,   WIN_TR,  _______,   _______,
+                                   _______, HYP_Q,   HYP_W,   HYP_E,   _______,   _______,
     /* index, large top key */                                                             _______,
-    /* home row */                 _______, WIN_L,   WIN_B,   WIN_R,   WIN_F,     _______,
-                                   _______, WIN_BL,  WIN_CYC, WIN_BR,  WIN_C,     _______,
+    /* home row */                 _______, HYP_A,   HYP_S,   HYP_D,   HYP_F,     _______,
+                                   _______, HYP_Z,   HYP_X,   HYP_C,   HYP_V,     _______,
     /* index, large bottom key */                                                          _______,
     /* bottom row */               P_CMP,   P_1PASS, P_OKTA,  P_CP,    P_LP,
 
@@ -49,13 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* thumb, small bottom key */                                                                                     RESET,
 
                                   /* right hand */
-    /* top row */                                                    TMUX_6,  TMUX_7,  TMUX_8,   TMUX_9,  _______, KC_BRTD, KC_BRTU,
+    /* top row */                                                    TMUX_6,  TMUX_7,  TMUX_8,   TMUX_LAST,  _______, KC_BRTD, KC_BRTU,
     /* index, large top key */                                       _______,
-                                                                              TMUX_C,  TMUX_CYC, PRV_WD,  NXT_WD,  TMUX_P,  _______,
-    /* home row */                                                            KC_LEFT, KC_DOWN,  KC_UP,   KC_RGHT, _______, _______,
+                                                                              TMUX_C,  TMUX_CYC, PRV_WD,     NXT_WD,  TMUX_P,  _______,
+    /* home row */                                                            KC_LEFT, KC_DOWN,  KC_UP,      KC_RGHT, _______, _______,
     /* index, large bottom key */                                    _______,
-                                                                              TMUX_N,  _______,  TX_SW_L, TX_SW_R, _______, _______,
-    /* bottom row */                                                                   KC_MRWD,  KC_MPLY, KC_MFFD, KC_VOLD, KC_VOLU,
+                                                                              TMUX_N,  _______,  TX_SW_L,    TX_SW_R, _______, _______,
+    /* bottom row */                                                                   KC_MRWD,  KC_MPLY,    KC_MFFD, KC_VOLD, KC_VOLU,
     /* thumb, small top keys */             KC_DEL, KC_DEL,
     /* thumb, small middle key */           RESET,
     /* thumb, small bottom key */           RESET,
